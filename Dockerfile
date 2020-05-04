@@ -1,7 +1,8 @@
-from centos
+from php:7.2-apache
 maintainer sonu
-env x=mysite
-run dnf install httpd -y
-copy OSMS /var/www/html/
-expose 80
-entrypoint httpd -DFOREGROUND
+run docker-php-ext-install mysqli pdo_mysql
+run mkdir /www
+
+copy OSMS/ /www/OSMS
+run cp -r /www/* /var/www/html/.
+
